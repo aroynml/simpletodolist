@@ -1,0 +1,113 @@
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <span>Welcome</span>
+    <div class="spacer"></div>
+</div>
+
+<div class="content" role="main">
+  <div class="container"> <form #todoForm="ngForm" (submit)="addTodo(todoForm.value, priority.value); todoForm.resetForm()">
+    <div class="form-group">  
+      <h1 class="text-center text-primary">Simple Todo List</h1>   
+      <div class="input-group-prepend">
+        <input type="text" #todo class="form-control" placeholder="Add Todo" name="todo" (keyup.enter)="addTodo(todo.value, priority.value)" ngModel>
+        <input type="number" #priority class="form-control" placeholder="Priority (0 to 9)" name="priority" value="2" min="0" max="9" ngModel>
+        <span class="input-group-text" (click)="addTodo(todo.value, priority.value)">Add</span>
+      </div>
+      <hr>
+      <!--<div class="data">  
+        <ul class="list-instyled">   
+          <li *ngFor="let todo of todoArray">{{todo}}</li>  
+        </ul>  
+      </div>-->
+      <!--<ul class="list-unstyled">
+        <li [@moveInLeft]  *ngFor="let todo of todoArray">{{todo}} <i (click)="deleteItem(todo)" class="material-icons">delete</i></li>
+      </ul>-->
+    </div>
+  </form></div>
+  <hr/>
+  <!-- Highlight Card -->
+  <div class="card highlight-card card-small" >
+    <span>{{ title }} is running!</span>
+  </div>
+
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>
